@@ -1,0 +1,4292 @@
+<style>
+  * {
+    margin: 0;
+  }
+
+  .watchcenter,
+  .watchcenterh2 {
+    margin: auto;
+    text-align: center;
+    font-weight: 200;
+    width: 70%;
+  }
+
+  .watchcenterh2 {
+    margin-bottom: 40px;
+  }
+
+  .religion-text {
+    display: inline-block;
+    border: 2px solid #ff0000;
+    padding: 10px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 25px;
+  }
+
+  .islam-text {
+    border: 2px solid #006c35;
+  }
+  .buddhism-text {
+    border: 2px solid #ffff00;
+  }
+  .sikhism-text {
+    border: 2px solid #00008b;
+  }
+  .judaism-text {
+    border: 2px solid #0038b8;
+  }
+  .hinduism-text {
+    border: 2px solid #ffa500;
+  }
+
+  .gender h2 {
+    font-size: 18px;
+  }
+
+  .gender {
+    width: auto;
+    padding-left: 80px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product-container {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .product-card {
+    width: auto;
+    background-color: #f8f8f8;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  .card-top {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  .cart-icon {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .cart-icon:hover {
+    transform: scale(1.2);
+  }
+
+  .cart-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .quick-add-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .my-button {
+    border: none;
+    background: #f8f8f8;
+  }
+
+  .product-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .product-image img {
+    width: 75%;
+    z-index: 0;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .product-image:hover img {
+    transform: scale(1.1);
+  }
+
+  .product-info {
+    padding: 15px;
+    text-align: left;
+  }
+
+  .product-info h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #252525;
+    margin-bottom: 5px;
+    letter-spacing: 5px;
+  }
+
+  .product-info h4 {
+    font-size: 14px;
+    color: #252525;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .product-category {
+    font-size: 10px;
+    font-weight: 100;
+    color: #252525;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+  }
+
+  @media (min-width: 768px) {
+    .product-card {
+      width: calc(33.33% - 40px);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .product-card {
+      width: 100%;
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+  .shop-now-button {
+    padding: 20px 40px;
+    border: 1px solid #000;
+    border-radius: 40px;
+    background-color: transparent;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .shop-now-button:hover {
+    background-color: #000;
+    color: #fff;
+  }
+
+  @media screen and (min-width: 100px) {
+    .popup__content {
+      min-width: 90vw;
+    }
+  }
+
+  .hhbutton {
+    display: inline;
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 25px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 25px;
+  }
+
+  .popup {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+  }
+  .popup:target {
+    opacity: 1;
+    visibility: visible;
+  }
+  .popup__content {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 30vw;
+    background-color: white;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+  .popup__text {
+    font-size: 2.5rem;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .btn-close {
+    display: block;
+    width: 10px;
+    font-size: 30px;
+    right: 40px;
+    top: 10px;
+    position: absolute;
+    background-color: transparent;
+    border: 0;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .popup__content h3 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    margin-top: 40px;
+  }
+  .modal-religion-text {
+    margin-top: 0;
+    font-size: 40px;
+  }
+
+  .modal-religion-image {
+    width: 40%;
+    padding: 0;
+  }
+  @media (min-width: 750px) {
+    .modal-religion-image {
+      width: 50%;
+    }
+    .btn-close {
+      font-size: 30px;
+      right: 40px;
+      top: 10px;
+    }
+    .popup__text {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .popup__content {
+      min-width: 50vw;
+    }
+
+    .hhbutton {
+      padding: 40px;
+      margin: 20px;
+      margin-bottom: 50px;
+      font-size: 20px;
+    }
+  }
+
+  .hide {
+    display: none;
+  }
+</style>
+
+<div class="popup" id="popup">
+  <div class="popup__content">
+    <button
+      href="https://www.0af3b2-57.myshopify.com/"
+      onclick="closeModal()"
+      type="button"
+      class="btn-close"
+    >
+      &#10006;
+    </button>
+    <h3>You've selected:</h3>
+    <h2 class="modal-religion-text"></h2>
+    <img class="modal-religion-image" src=" " alt="religion sign" />
+    <h2 class="popup__text">Who are you shopping for?</h2>
+    <a href="#" data-sex="him" class="hhbutton">FOR HIM</a>
+    <a href="#" data-sex="her" class="hhbutton">FOR HER</a>
+  </div>
+</div>
+
+<div>
+  <h1 class="watchcenter">BROWSE OUR COLLECTION</h1>
+  <h2 class="watchcenterh2">"YOUR FAITH ON YOUR WRIST"</h2>
+  <div class="watchcenter">
+    <h1 class="religion-text">CHRISTIANITY</h1>
+  </div>
+  <div class="gender">
+    <h2>MEN</h2>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+  </div>
+  <div class="gender">
+    <h2>WOMEN</h2>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+  </div>
+  <div class="button-container pick">
+    <a href="#popup">
+      <button class="shop-now-button">SHOP THE COLLECTION</button>
+      <h2 class="religion hide">Christian</h2>
+    </a>
+  </div>
+</div>
+
+
+
+
+<div>
+  <div class="watchcenter">
+    <h1 class="religion-text islam-text">ISLAM</h1>
+  </div>
+  <div class="gender">
+    <h2>MEN</h2>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+  </div>
+  <div class="gender">
+    <h2>WOMEN</h2>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+  </div>
+  <div class="button-container pick">
+    <a href="#popup">
+      <button class="shop-now-button">SHOP THE COLLECTION</button>
+      <h2 class="religion hide">Islam</h2>
+    </a>
+  </div>
+</div>
+
+<div>
+  <div class="watchcenter">
+    <h1 class="religion-text hinduism-text">HINDUISM</h1>
+  </div>
+  <div class="gender">
+    <h2>MEN</h2>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+  </div>
+  <div class="gender">
+    <h2>WOMEN</h2>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+  </div>
+  <div class="button-container pick">
+    <a href="#popup">
+      <button class="shop-now-button">SHOP THE COLLECTION</button>
+      <h2 class="religion hide">Hinduism</h2>
+    </a>
+  </div>
+</div>
+
+<div>
+  <div class="watchcenter">
+    <h1 class="religion-text buddhism-text">BUDDHISM</h1>
+  </div>
+  <div class="gender">
+    <h2>MEN</h2>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+  </div>
+  <div class="gender">
+    <h2>WOMEN</h2>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+  </div>
+  <div class="button-container pick">
+    <a href="#popup">
+      <button class="shop-now-button">SHOP THE COLLECTION</button>
+      <h2 class="religion hide">Buddha</h2>
+    </a>
+  </div>
+</div>
+
+<div>
+  <div class="watchcenter">
+    <h1 class="religion-text sikhism-text">SIKHISM</h1>
+  </div>
+  <div class="gender">
+    <h2>MEN</h2>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+  </div>
+  <div class="gender">
+    <h2>WOMEN</h2>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+  </div>
+  <div class="button-container pick">
+    <a href="#popup">
+      <button class="shop-now-button">SHOP THE COLLECTION</button>
+      <h2 class="religion hide">Sikhism</h2>
+    </a>
+  </div>
+</div>
+
+<div>
+  <div class="watchcenter">
+    <h1 class="religion-text judaism-text">JUDAISM</h1>
+  </div>
+  <div class="gender">
+    <h2>MEN</h2>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">MEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+  </div>
+  <div class="gender">
+    <h2>WOMEN</h2>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <product-form
+          data-section-id="template--20086260302091__featured_collection_aTqc76"
+        >
+          <form
+            method="post"
+            action="/cart/add"
+            id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input
+              type="hidden"
+              name="id"
+              value="45721251676427"
+              class="product-variant-id"
+            />
+            <button
+              id="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit"
+              type="submit"
+              name="add"
+              class="quick-add__submit button--full-width button--secondary my-button"
+              aria-haspopup="dialog"
+              aria-labelledby="quick-add-template--20086260302091__featured_collection_aTqc768761520554251-submit title-template--20086260302091__featured_collection_aTqc76-8761520554251"
+              aria-live="polite"
+              data-sold-out-message="true"
+            >
+              <div class="cart-icon">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                    <path d="M15 6h6m-3 -3v6"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="loading__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    stroke-width="6"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+              </div>
+            </button>
+            <input
+              type="hidden"
+              name="product-id"
+              value="8761520554251"
+            /><input
+              type="hidden"
+              name="section-id"
+              value="template--20086260302091__featured_collection_aTqc76"
+            />
+          </form>
+        </product-form>
+      </div>
+      <a
+        href="https://0af3b2-57.myshopify.com/products/christian-female-watch-2"
+        class="watch-link"
+      >
+        <div class="product-image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0755/3771/1371/files/DL-celeste-leo-FEMALE.webp?v=1722908263"
+            alt="Product Image 1"
+          />
+        </div>
+      </a>
+      <div class="product-info">
+        <div class="product-category">WOMEN'S</div>
+        <h2>PRODUCT 1</h2>
+        <h4>$49.99</h4>
+      </div>
+    </div>
+  </div>
+  <div class="button-container pick">
+
+      <button class="shop-now-button">SHOP THE COLLECTION</button>
+      <h2 class="religion hide">Jew</h2>
+
+  </div>
+</div>
+
+<script>
+
+modal1 = document.getElementById("popup");
+
+function closeModal() {
+  // Close the modal when the user clicks outside of it
+  window.onclick = function (event) {
+    if (event.target == modal1) {
+      modal1.style.display = "none"; // Hide the modal
+    }
+  };
+
+  modal1.style.display = "none"; // Close the modal programmatically
+}
+
+  const religionImages1 = [
+    {
+      name: "Christian",
+      url: "https://cdn.shopify.com/s/files/1/0755/3771/1371/files/christian.png?v=1725247732",
+    },
+    {
+      name: "Islam",
+      url: "https://cdn.shopify.com/s/files/1/0755/3771/1371/files/islam2.png?v=1725246868",
+    },
+    {
+      name: "Buddhism",
+      url: "https://cdn.shopify.com/s/files/1/0755/3771/1371/files/buddhism.png?v=1725247815",
+    },
+    {
+      name: "Judaism",
+      url: "https://cdn.shopify.com/s/files/1/0755/3771/1371/files/judaism.png?v=1725247765",
+    },
+    {
+      name: "Sikhism",
+      url: "https://cdn.shopify.com/s/files/1/0755/3771/1371/files/sikhism.png?v=1725247828",
+    },
+    {
+      name: "Hinduism",
+      url: "https://cdn.shopify.com/s/files/1/0755/3771/1371/files/hinduism.png?v=1725247803",
+    },
+  ];
+  var religion1 = "";
+  const modalbuttons1 = document.querySelectorAll(".pick");
+  modalbuttons1.forEach((button) => {
+    button.addEventListener("click", () => {
+      modal1.style.display = "block";
+      var clickedreligion1 = button.querySelector(".religion").innerHTML;
+      religion1 = clickedreligion1.toLowerCase();
+      const religionObject1 = religionImages1.find(
+        (item) => item.name.toLowerCase() === religion1
+      );
+      if (religionObject1) {
+        const religionmodalurl1 = religionObject1.url;
+        const modalreligionimage1 = document.querySelector(
+          ".modal-religion-image"
+        );
+        const modalreligiontext1 = document.querySelector(
+          ".modal-religion-text"
+        );
+        modalreligionimage1.setAttribute("src", religionmodalurl1);
+        modalreligiontext1.innerHTML = `${religionObject1.name.toUpperCase()}`;
+      }
+    });
+  });
+  const hhbuttons1 = document.querySelectorAll(".hhbutton");
+  hhbuttons1.forEach((hhbutton) => {
+    hhbutton.addEventListener("click", () => {
+      var hhdata1 = hhbutton.getAttribute("data-sex");
+      window.open(`/collections/for-${hhdata1}-${religion1}`, "_self");
+    });
+  });
+
+  window.addEventListener("scroll", function () {
+    var containers = document.querySelectorAll(".grid-item1");
+    var windowHeight = window.innerHeight;
+    var delay = 100; // Adjust the delay time in milliseconds
+
+    var counter = 0;
+    containers.forEach(function (container) {
+      var containerTop = container.getBoundingClientRect().top;
+
+      if (containerTop < windowHeight) {
+        setTimeout(function () {
+          container.classList.add("show");
+        }, delay * counter);
+        counter++;
+      }
+    });
+  });
+</script>
